@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/24 15:37:32 by yukurosa         ###   ########.fr       */
+/*   Created: 2026/05/08 14:20:37 by yukurosa          #+#    #+#             */
+/*   Updated: 2026/05/08 14:20:40 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	init_option(t_option *opt)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	opt->bench = 0;
-	opt->strategy = STRATEGY_ADAPTIVE;
-	opt->has_strategy = 0;
-}
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-int	main(int argc, char **argv)
-{
-	t_stack		*a;
-	t_stack		*b;
-	t_option	opt;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	init_option(&opt);
-	if (!parse_args(&a, argc, argv, &opt))
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
 	{
-		free_stack(a);
-		return (1);
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		if (str1[i] == '\0')
+			return (0);
+		i++;
 	}
-	route_sort(&a, &b, &opt);
-	free_stack(a);
-	free_stack(b);
 	return (0);
 }

@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/24 15:37:32 by yukurosa         ###   ########.fr       */
+/*   Created: 2026/04/23 13:39:28 by yukurosa          #+#    #+#             */
+/*   Updated: 2026/04/29 10:45:20 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	init_option(t_option *opt)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	opt->bench = 0;
-	opt->strategy = STRATEGY_ADAPTIVE;
-	opt->has_strategy = 0;
-}
+	size_t				i;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
 
-int	main(int argc, char **argv)
-{
-	t_stack		*a;
-	t_stack		*b;
-	t_option	opt;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	init_option(&opt);
-	if (!parse_args(&a, argc, argv, &opt))
+	p1 = (const unsigned char *)s1;
+	p2 = (const unsigned char *)s2;
+	i = 0;
+	while (i < n)
 	{
-		free_stack(a);
-		return (1);
+		if (p1[i] != p2[i])
+		{
+			return (p1[i] - p2[i]);
+		}
+		i++;
 	}
-	route_sort(&a, &b, &opt);
-	free_stack(a);
-	free_stack(b);
 	return (0);
 }

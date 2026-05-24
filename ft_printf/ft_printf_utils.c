@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/24 15:37:32 by yukurosa         ###   ########.fr       */
+/*   Created: 2026/05/04 16:11:42 by yukurosa          #+#    #+#             */
+/*   Updated: 2026/05/11 14:33:06 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void	init_option(t_option *opt)
+int	ft_putchar(char c)
 {
-	opt->bench = 0;
-	opt->strategy = STRATEGY_ADAPTIVE;
-	opt->has_strategy = 0;
+	if (write(1, &c, 1) == -1)
+		return (-1);
+	return (1);
 }
 
-int	main(int argc, char **argv)
+int	ft_putstr(char *str)
 {
-	t_stack		*a;
-	t_stack		*b;
-	t_option	opt;
+	int	i;
+	int	ret;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	init_option(&opt);
-	if (!parse_args(&a, argc, argv, &opt))
+	if (!str)
+		return (write(1, "(null)", 6));
+	i = 0;
+	while (str[i])
 	{
-		free_stack(a);
-		return (1);
+		ret = ft_putchar(str[i]);
+		if (ret == -1)
+			return (-1);
+		i++;
 	}
-	route_sort(&a, &b, &opt);
-	free_stack(a);
-	free_stack(b);
-	return (0);
+	return (i);
 }

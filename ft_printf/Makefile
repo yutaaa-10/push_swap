@@ -5,42 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/24 15:37:30 by yukurosa         ###   ########.fr        #
+#    Created: 2026/05/07 12:15:29 by yukurosa          #+#    #+#              #
+#    Updated: 2026/05/09 16:48:04 by yukurosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = libftprintf.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-CPPFLAGS = -I. -Ilibft
 
 SRCS = \
-	main.c \
-	input_parser/parse_args.c \
-	stack/list.c \
-	operation/operations.c \
-	libft/ft_atoi.c \
-	libft/ft_isdigit.c \
-	libft/ft_strncmp.c \
-	sort/route_sort.c \
-	sort/small_sort.c \
-	sort/strategy_sort.c \
-	error/error.c \
-	error/has_duplicate.c \
-	error/number_check.c
-
+	ft_printf.c \
+	ft_printf_number.c \
+	ft_printf_utils.c \
+	ft_printf_Hexadecimal.c
 
 OBJS = $(SRCS:.c=.o)
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -49,5 +40,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/24 15:37:32 by yukurosa         ###   ########.fr       */
+/*   Created: 2026/04/23 13:37:50 by yukurosa          #+#    #+#             */
+/*   Updated: 2026/04/29 10:58:17 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	init_option(t_option *opt)
+int	ft_isascii(int c)
 {
-	opt->bench = 0;
-	opt->strategy = STRATEGY_ADAPTIVE;
-	opt->has_strategy = 0;
-}
-
-int	main(int argc, char **argv)
-{
-	t_stack		*a;
-	t_stack		*b;
-	t_option	opt;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1)
-		return (0);
-	init_option(&opt);
-	if (!parse_args(&a, argc, argv, &opt))
+	if (c >= 0 && c <= 127)
 	{
-		free_stack(a);
 		return (1);
 	}
-	route_sort(&a, &b, &opt);
-	free_stack(a);
-	free_stack(b);
 	return (0);
 }

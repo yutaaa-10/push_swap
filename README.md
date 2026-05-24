@@ -23,26 +23,8 @@ free
 
 実行例
 ./push_swap 3 2 1
-./push_swap --complex 3 2 1 ./push_swap --bench --adaptive 3 2 1
-
-
-ファイル構成
-push_swap /
-	Makefile
-	pushs_swap
-	README.md
-
-	libft /
-	ft_printf /
-
-	input_parser /
-	stack /
-	disorder /
-	operation /
-	sort /
-	bench /
-
-	main.c
+./push_swap --complex 3 2 1
+./push_swap --bench --adaptive 3 2 1
 
 
 詳細
@@ -71,62 +53,6 @@ push_swap /
 	◦優れたパフォーマンス：5500 演算未満
 
 
-各ディレクトリの役割
-
-main.c
-argc / argv を受け取る
-parserを呼ぶ
-sortを呼ぶ
-bench表示
-freeして終了
-
-
-input_parser/
-引数解析
-flag確認
-int範囲、重複確認
-stack生成
-
-例　./push_swap --complex 3 2 1
-
-		strategy = complex
-		a = 3 -> 2 -> 1
-
-
-stack/
-linked list補助関数
-
-stack_new
-stack_add_back
- stack_size
-stack_last
-free_stack
-print_stack
-
-
-operation/
-push_swap の11操作
-	sa (a の入れ替え): スタック a の上位 2 つの要素を入れ替えます。
-						要素が1つしかない場合や要素がない場合は何もしない。
-	sb (bの先頭2要素を入れ替える): スタックbの先頭にある2つの要素を入れ替える。
-						要素が1つしかない場合や要素がない場合は何もしない。
-	ss : saとsbを同時に実行する。
-	pa (aにbの先頭要素をプッシュ): bの先頭にある要素を取り出し、aの先頭に置く。
-										bが空の場合は何もしない。
-	pb (push b): スタック a の先頭要素を取り出し、b の先頭に置く。
-					a が空の場合は何もしない。
-	ra (rotate a): スタック a の全要素を 1 つずつ上にシフトする。
-					先頭要素が最後尾になる。
-	rb (rotate b): スタック b の全要素を 1 つずつ上にシフトする。
-					最初の要素が最後の要素になる。
-	rr : ra と rb を同時に実行する。
-	rra (a の逆回転): スタック a のすべての要素を 1 つずつ下へシフトする。
-					最後の要素が最初の要素になる。
-	rrb (b の逆回転): スタック b のすべての要素を 1 つずつ下へシフトする。
-					最後の要素が最初の要素になる。
-	rrr : rra と rrb を同時に実行する。
-
-
 sort/
 simplesort　(O(n^2))
 	・挿入ソート
@@ -149,6 +75,104 @@ complexsort O(n log n)
 	•バイナリインデックスツリーによるアプローチ
 
 
+ファイル構成
+push_swap /
+	Makefile
+	pushs_swap
+	README.md
+
+	libft /
+	ft_printf /
+
+	input_parser /
+	stack /
+	disorder /
+	operation /
+	sort /
+	bench /
+
+	main.c
+
+・main.c
+引数を受け取り、parser、sort、benchを呼んでfreeをする
+init_option
+オプション設定を初期状態にする関数。
+初期値を0に設定することで、--benchがないときはそのままにしてプログラムを進めることができる
+main
+引数解析、ソート実行、メモリ解放
+
+
+・input_parser
+引数解析、flag確認、int範囲、重複確認、stack生成を行う。
+parse_args
+コマンドライン引数を数字やフラグ、として読み取る関数
+handle_flag
+--benchやソートのフラグを処理する関数
+is_strategy_flag
+文字れるが戦略フラグかどうかを判定する
+
+・error
+print_error
+標準エラーにerrorを出力する
+number_check
+文字列が整数として正しい形かを確認する関数
+ft_atol
+文字列をlong型にする
+一度ロングで受け取って、そのあとintを超える範囲ならreturnする
+has_duplicate
+スタックないに同じ値があるか確認する関数
+
+・stack
+linked list補助関数
+stack_new
+新しいスタックノードを作る関数。
+stack_add_back
+スタックの末尾にノードを追加する関数。
+free_stack
+スタック全体のメモリを解放する関数。
+stack_size
+スタックの要素数を数える関数。
+
+・operation
+sa
+stack A の先頭2つを入れ替える関数。
+sb
+stack B の先頭2つを入れ替える関数。
+ss
+sa と sb を同時に行う関数。
+pa
+stack B の先頭を stack A に移す関数。
+pb
+stack A の先頭を stack B に移す関数。
+ra
+stack A を上方向に1つ回転する関数。
+rb
+stack B を上方向に1つ回転する関数。
+rr
+ra と rb を同時に行う関数。
+rra
+stack A を下方向に1つ回転する関数。
+rrb
+stack B を下方向に1つ回転する関数。
+rrr
+rra と rrb を同時に行う関数。
+
+route_sort
+要素数や戦略に応じて使うソート関数を選ぶ関数。
+sort_two
+2個用のソート関数
+sort_three
+3個用のソート関数
+sort_five
+5個以下用のソート関数
+simple_sort
+simple戦略のソート関数、今は仮実装
+medium_sort
+medium戦略のソート関数
+complex_sort
+complex戦略のソート関数
+adaptive_sortadaptive戦略のソート関数
+
 disorder/
 入力の乱れ具合を計算
 初期のスタックがどれだけ綺麗に並べられているか
@@ -166,3 +190,5 @@ strategy
 complexity
 operation
 operation回数
+
+

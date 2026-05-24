@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 21:23:43 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/21 21:25:16 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/24 15:37:41 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,27 @@ void	stack_add_back(t_stack **stack, t_stack *new)
 	last->next = new;
 }
 
-void	parse_args(t_stack **a, int argc, char **argv)
+void	free_stack(t_stack *stack)
 {
-	int		i;
-	int		value;
-	t_stack	*new;
+	t_stack	*tmp;
 
-	i = 1;
-	while (i < argc)
+	while (stack)
 	{
-		value = atoi(argv[i]);
-		new = stack_new(value);
-		stack_add_back(a, new);
-		i++;
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
 	}
+}
+
+int	stack_size(t_stack *stack)
+{
+	int	count;
+
+	count = 0;
+	while (stack)
+	{
+		count++;
+		stack = stack->next;
+	}
+	return (count);
 }
