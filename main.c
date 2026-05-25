@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/24 15:37:32 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/25 15:39:25 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	init_option(t_option *opt)
 
 int	main(int argc, char **argv)
 {
-	t_stack		*a;
-	t_stack		*b;
-	t_option	opt;
+	t_stack *a;
+	t_stack *b;
+	t_option opt;
 
 	a = NULL;
 	b = NULL;

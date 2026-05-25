@@ -6,13 +6,14 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/24 15:37:26 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/25 15:26:46 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
@@ -87,5 +88,8 @@ void				simple_sort(t_stack **a, t_stack **b);
 void				medium_sort(t_stack **a, t_stack **b);
 void				complex_sort(t_stack **a, t_stack **b);
 void				adaptive_sort(t_stack **a, t_stack **b);
+
+// adaptive sort
+double				calculate_disorder(t_stack *a);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/24 15:37:30 by yukurosa         ###   ########.fr        #
+#    Updated: 2026/05/25 15:35:33 by yukurosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,18 @@ SRCS = \
 	libft/ft_atoi.c \
 	libft/ft_isdigit.c \
 	libft/ft_strncmp.c \
+	ft_printf/ft_printf.c \
+	ft_printf/ft_printf_Hexadecimal.c \
+	ft_printf/ft_printf_number.c \
+	ft_printf/ft_printf_utils.c \
 	sort/route_sort.c \
 	sort/small_sort.c \
 	sort/strategy_sort.c \
+	sort/adaptive.c \
 	error/error.c \
 	error/has_duplicate.c \
-	error/number_check.c
+	error/number_check.c 
+
 
 
 OBJS = $(SRCS:.c=.o)
