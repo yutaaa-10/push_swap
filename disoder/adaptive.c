@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/25 14:51:33 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/25 15:54:32 by yukurosa         ###   ########.fr       */
+/*   Created: 2026/05/25 16:11:01 by yukurosa          #+#    #+#             */
+/*   Updated: 2026/05/25 16:59:29 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,29 @@
 
 double	calculate_disorder(t_stack *a)
 {
-	int		misetake;
-	int		size;
-	t_stack	*cur;
-	t_stack	*next;
+	t_stack	*i;
+	t_stack	*j;
+	int		mistake;
+	int		total;
 
-	if (!a)
+	if (!a || !a->next)
 		return (0.0);
-	size = stack_size(a);
-	if (size <= 1)
-		return (0.0);
-	misetake = 0;
-	cur = a;
-	next = a->next;
-	while (next != NULL)
+	mistake = 0;
+	total = 0;
+	i = a;
+	while (i)
 	{
-		if (cur->value > next->value)
-			misetake++;
-		cur = next;
-		next = next->next;
+		j = i->next;
+		while (j)
+		{
+			total++;
+			if (i->value > j->value)
+				mistake++;
+			j = j->next;
+		}
+		i = i->next;
 	}
-	return ((double)misetake / (double)(size - 1));
+	if (total == 0)
+		return (0.0);
+	return ((double)mistake / (double)total);
 }
