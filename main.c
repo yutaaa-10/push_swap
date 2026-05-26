@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/26 13:13:08 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/26 13:55:51 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ int	main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 	t_option	opt;
-	int			i;
 
 	a = NULL;
 	b = NULL;
 	if (argc == 1)
 		return (0);
-	i = 0;
 	init_option(&opt);
 	if (!parse_args(&a, argc, argv, &opt))
 	{
