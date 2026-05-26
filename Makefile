@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/26 11:54:34 by yukurosa         ###   ########.fr        #
+#    Updated: 2026/05/26 20:14:22 by hdobashi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CPPFLAGS = -I. -Ilibft
 SRCS = \
 	main.c \
 	input_parser/parse_args.c \
+	input_parser/fill_index.c\
 	stack/list.c \
 	operation/operations.c \
 	libft/ft_atoi.c \

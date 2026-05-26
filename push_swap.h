@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/26 10:59:05 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/26 20:15:22 by hdobashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int					has_duplicate(t_stack *a, int value);
 // input_parse
 int					parse_args(t_stack **a, int argc, char **argv,
 						t_option *opt);
+void				fill_index(*a);						
 int					handle_flag(char *s, t_option *opt);
 int					is_strategy_flag(char *s);
 void				init_option(t_option *opt);
