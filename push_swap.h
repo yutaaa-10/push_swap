@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/25 17:02:50 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/26 10:59:05 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,17 @@ void				sort_three(t_stack **a);
 void				sort_five(t_stack **a, t_stack **b);
 
 // strategy sort
+
+// simple sort
 void				simple_sort(t_stack **a, t_stack **b);
+void				rotate_min_to_top(t_stack **a, int min_pos, int size);
+int					find_min_position(t_stack *a);
+
 void				medium_sort(t_stack **a, t_stack **b);
 void				complex_sort(t_stack **a, t_stack **b);
-void				adaptive_sort(t_stack **a, t_stack **b);
 
 // adaptive sort
+void				adaptive_sort(t_stack **a, t_stack **b);
 double				calculate_disorder(t_stack *a);
 
 #endif

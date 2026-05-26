@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 16:11:01 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/25 16:59:29 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/26 10:27:20 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,19 @@ double	calculate_disorder(t_stack *a)
 	if (total == 0)
 		return (0.0);
 	return ((double)mistake / (double)total);
+}
+
+void	adaptive_sort(t_stack **a, t_stack **b)
+{
+	double	score;
+
+	if (!a || !*a)
+		return ;
+	score = calculate_disorder(*a);
+	if (score < 0.2)
+		simple_sort(a, b);
+	else if (score >= 0.2 && score < 0.5)
+		medium_sort(a, b);
+	else
+		complex_sort(a, b);
 }

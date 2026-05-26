@@ -6,7 +6,7 @@
 #    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/25 16:11:41 by yukurosa         ###   ########.fr        #
+#    Updated: 2026/05/26 11:54:34 by yukurosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,15 @@ SRCS = \
 	ft_printf/ft_printf_utils.c \
 	sort/route_sort.c \
 	sort/small_sort.c \
-	sort/strategy_sort.c \
 	disoder/adaptive.c \
 	error/error.c \
 	error/has_duplicate.c \
-	error/number_check.c 
+	error/number_check.c \
+	sort/simple_sort/selection.c\
+	sort/medium_sort/a.c \
+	sort/complex_sort/a.c
+
+
 
 
 
