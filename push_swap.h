@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/27 14:47:10 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/27 22:44:16 by hdobashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,9 @@ void				push_chunks_to_b(t_stack **a, t_stack **b, int chunk_size);
 int					get_chunk_size(int size);
 
 void				complex_sort(t_stack **a, t_stack **b);
+
+//complex sort
+void	complex_sort(t_stack **a, t_stack **b)
 
 // adaptive sort
 void				adaptive_sort(t_stack **a, t_stack **b);
