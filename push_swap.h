@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/26 20:15:22 by hdobashi         ###   ########.fr       */
+/*   Updated: 2026/05/27 14:47:10 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int					has_duplicate(t_stack *a, int value);
 // input_parse
 int					parse_args(t_stack **a, int argc, char **argv,
 						t_option *opt);
-void				fill_index(*a);						
+void				fill_index(t_stack *a);
 int					handle_flag(char *s, t_option *opt);
 int					is_strategy_flag(char *s);
 void				init_option(t_option *opt);
@@ -83,7 +83,6 @@ void				route_sort(t_stack **a, t_stack **b, t_option *opt);
 void				sort_two(t_stack **a);
 void				sort_three(t_stack **a);
 void				sort_five(t_stack **a, t_stack **b);
-
 // strategy sort
 
 // simple sort
@@ -91,11 +90,17 @@ void				simple_sort(t_stack **a, t_stack **b);
 void				rotate_min_to_top(t_stack **a, int min_pos, int size);
 int					find_min_position(t_stack *a);
 
+// medium sort
 void				medium_sort(t_stack **a, t_stack **b);
+void				push_back_to_a(t_stack **a, t_stack **b);
+void				rotate_max_to_top(t_stack **b, int max_pos, int size);
+int					find_max_position(t_stack *b);
+void				push_chunks_to_b(t_stack **a, t_stack **b, int chunk_size);
+int					get_chunk_size(int size);
+
 void				complex_sort(t_stack **a, t_stack **b);
 
 // adaptive sort
 void				adaptive_sort(t_stack **a, t_stack **b);
 double				calculate_disorder(t_stack *a);
-
 #endif

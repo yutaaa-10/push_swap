@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/26 20:14:22 by hdobashi         ###   ########.fr        #
+#    Updated: 2026/05/27 15:06:02 by yukurosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ SRCS = \
 	input_parser/parse_args.c \
 	input_parser/fill_index.c\
 	stack/list.c \
-	operation/operations.c \
 	libft/ft_atoi.c \
 	libft/ft_isdigit.c \
 	libft/ft_strncmp.c \
@@ -36,8 +35,12 @@ SRCS = \
 	error/has_duplicate.c \
 	error/number_check.c \
 	sort/simple_sort/selection.c\
-	sort/medium_sort/a.c \
-	sort/complex_sort/a.c
+	sort/medium_sort/chunk.c \
+	sort/complex_sort/a.c \
+	operation/oper_p.c \
+	operation/oper_r.c \
+	operation/oper_rr.c \
+	operation/oper_s.c
 
 
 
