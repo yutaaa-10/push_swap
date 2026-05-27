@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 23:08:20 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/27 15:42:06 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/27 17:36:42 by hdobashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static int	parse_split(t_stack **a, char **split)
 	return (1);
 }
 
-int	parse_args(t_stack **a, int argc, char **argv, t_option *opt)
+int	parse_args(t_stack **a, int argc, char **argv, t_option *opt )
 {
 	int		i;
 	char	**split;
