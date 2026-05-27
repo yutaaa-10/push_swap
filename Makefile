@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/27 15:44:30 by yukurosa         ###   ########.fr        #
+#    Updated: 2026/05/27 20:36:21 by hdobashi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRCS = \
 	error/number_check.c \
 	sort/simple_sort/selection.c\
 	sort/medium_sort/chunk.c \
-	sort/complex_sort/a.c \
+	sort/complex_sort/complex.c \
 	operation/oper_p.c \
 	operation/oper_r.c \
 	operation/oper_rr.c \
