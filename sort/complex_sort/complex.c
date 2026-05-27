@@ -6,7 +6,7 @@
 /*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 10:28:57 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/27 21:44:12 by hdobashi         ###   ########.fr       */
+/*   Updated: 2026/05/27 22:41:30 by hdobashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ static void return_to_a(t_stack **a,t_stack **b)
 					pa(a,b,1);
 					pushed_next++;
 				}
-				rb(b,1);
+				else
+					rb(b,1);
 			}
 		}
 		else
@@ -75,8 +76,8 @@ static void return_to_a(t_stack **a,t_stack **b)
 					pa(a,b,1);
 					pushed_next++;
 				}
-				rrb(b,1);
-				max_pos++;
+				else
+					rrb(b,1);
 			}
 		}
 		pa(a,b,1);
