@@ -6,7 +6,7 @@
 #    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/27 15:06:02 by yukurosa         ###   ########.fr        #
+#    Updated: 2026/05/27 15:44:30 by yukurosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS = \
 	libft/ft_atoi.c \
 	libft/ft_isdigit.c \
 	libft/ft_strncmp.c \
+	libft/ft_split.c \
 	ft_printf/ft_printf.c \
 	ft_printf/ft_printf_Hexadecimal.c \
 	ft_printf/ft_printf_number.c \
