@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/26 13:55:51 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/27 13:59:20 by hdobashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 		free_stack(a);
 		return (1);
 	}
+	fill_index(&a);
 	route_sort(&a, &b, &opt);
 	free_stack(a);
 	free_stack(b);
