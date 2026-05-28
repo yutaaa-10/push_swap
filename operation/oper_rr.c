@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   oper_rr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 23:25:55 by hdobashi          #+#    #+#             */
-/*   Updated: 2026/05/26 23:33:07 by hdobashi         ###   ########.fr       */
+/*   Updated: 2026/05/28 13:39:50 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	rra(t_stack **a, int print)
+void	rra(t_stack **a, int print, t_option *opt)
 {
 	t_stack	*last;
 	t_stack	*second_last;
@@ -26,11 +26,16 @@ void	rra(t_stack **a, int print)
 	second_last->next = NULL;
 	last->next = *a;
 	*a = last;
+	if (opt)
+	{
+		opt->count.rra++;
+		opt->count.total++;
+	}
 	if (print)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack **b, int print)
+void	rrb(t_stack **b, int print, t_option *opt)
 {
 	t_stack	*last;
 	t_stack	*second_last;
@@ -44,13 +49,26 @@ void	rrb(t_stack **b, int print)
 	second_last->next = NULL;
 	last->next = *b;
 	*b = last;
+	if (opt)
+	{
+		opt->count.rrb++;
+		opt->count.total++;
+	}
 	if (print)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, t_option *opt)
 {
-	rra(a, 0);
-	rrb(b, 0);
+	rra(a, 0, opt);
+	rrb(b, 0, opt);
+	if (opt)
+	{
+		opt->count.rra--;
+		opt->count.rrb--;
+		opt->count.total -= 2;
+		opt->count.rrr++;
+		opt->count.total++;
+	}
 	write(1, "rrr\n", 4);
 }

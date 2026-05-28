@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/27 20:36:21 by hdobashi         ###   ########.fr        #
+#    Updated: 2026/05/28 13:41:46 by yukurosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,9 @@ SRCS = \
 	libft/ft_isdigit.c \
 	libft/ft_strncmp.c \
 	libft/ft_split.c \
-	ft_printf/ft_printf.c \
-	ft_printf/ft_printf_Hexadecimal.c \
-	ft_printf/ft_printf_number.c \
-	ft_printf/ft_printf_utils.c \
+	libft/ft_putstr_fd.c \
+	libft/ft_putnbr_fd.c \
+	libft/ft_putchar_fd.c \
 	sort/route_sort.c \
 	sort/small_sort.c \
 	disoder/adaptive.c \
@@ -41,7 +40,10 @@ SRCS = \
 	operation/oper_p.c \
 	operation/oper_r.c \
 	operation/oper_rr.c \
-	operation/oper_s.c
+	operation/oper_s.c \
+	bench/bench.c \
+
+
 
 
 

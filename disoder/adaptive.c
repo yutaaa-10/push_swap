@@ -6,13 +6,13 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 16:11:01 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/26 10:27:20 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 13:30:42 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-double	calculate_disorder(t_stack *a)
+static double	calculate_disorder(t_stack *a)
 {
 	t_stack	*i;
 	t_stack	*j;
@@ -41,7 +41,7 @@ double	calculate_disorder(t_stack *a)
 	return ((double)mistake / (double)total);
 }
 
-void	adaptive_sort(t_stack **a, t_stack **b)
+void	adaptive_sort(t_stack **a, t_stack **b, t_option *opt)
 {
 	double	score;
 
@@ -49,9 +49,18 @@ void	adaptive_sort(t_stack **a, t_stack **b)
 		return ;
 	score = calculate_disorder(*a);
 	if (score < 0.2)
-		simple_sort(a, b);
+	{
+		opt->strategy = STRATEGY_SIMPLE;
+		simple_sort(a, b, opt);
+	}
 	else if (score >= 0.2 && score < 0.5)
-		medium_sort(a, b);
+	{
+		opt->strategy = STRATEGY_MEDIUM;
+		medium_sort(a, b, opt);
+	}
 	else
-		complex_sort(a, b);
+	{
+		opt->strategy = STRATEGY_COMPLEX;
+		complex_sort(a, b, opt);
+	}
 }

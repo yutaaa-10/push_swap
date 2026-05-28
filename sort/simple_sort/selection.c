@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 10:18:48 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/26 12:31:47 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 12:54:44 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,35 @@ int	find_min_position(t_stack *a)
 	return (min_pos);
 }
 
-void	rotate_min_to_top(t_stack **a, int min_pos, int size)
+void	rotate_min_to_top(t_stack **a, int min_pos, int size, t_option *opt)
 {
 	int	count;
 
 	if (min_pos <= size / 2)
 	{
 		while (min_pos-- > 0)
-			ra(a, 1);
+			ra(a, 1, opt);
 	}
 	else
 	{
 		count = size - min_pos;
 		while (count-- > 0)
-			rra(a, 1);
+			rra(a, 1, opt);
 	}
 }
-void	simple_sort(t_stack **a, t_stack **b)
+
+void	simple_sort(t_stack **a, t_stack **b, t_option *opt)
 {
-	int	size;
-	int	min_pos;
+	int size;
+	int min_pos;
 
 	while (*a)
 	{
 		size = stack_size(*a);
 		min_pos = find_min_position(*a);
-		rotate_min_to_top(a, min_pos, size);
-		pb(a, b, 1);
+		rotate_min_to_top(a, min_pos, size, opt);
+		pb(a, b, 1, opt);
 	}
-	while (*b != NULL)
-		pa(a, b, 1);
+	while (*b)
+		pa(a, b, 1, opt);
 }

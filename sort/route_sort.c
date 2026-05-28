@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 12:44:29 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/25 15:41:29 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 13:31:04 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	route_sort(t_stack **a, t_stack **b, t_option *opt)
 
 	size = stack_size(*a);
 	if (size == 2)
-		sort_two(a);
+		sort_two(a, opt);
 	else if (size == 3)
-		sort_three(a);
+		sort_three(a, opt);
 	else if (size <= 5)
-		sort_five(a, b);
+		sort_five(a, b, opt);
 	else if (opt->strategy == STRATEGY_SIMPLE)
-		simple_sort(a, b);
+		simple_sort(a, b, opt);
 	else if (opt->strategy == STRATEGY_MEDIUM)
-		medium_sort(a, b);
+		medium_sort(a, b, opt);
 	else if (opt->strategy == STRATEGY_COMPLEX)
-		complex_sort(a, b);
+		complex_sort(a, b, opt);
 	else
-		adaptive_sort(a, b);
+		adaptive_sort(a, b, opt);
 }

@@ -6,22 +6,21 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 12:50:43 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/26 13:54:02 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 13:11:14 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sort_two(t_stack **a)
+void	sort_two(t_stack **a, t_option *opt)
 {
 	if (!a || !*a || !(*a)->next)
 		return ;
 	if ((*a)->value > (*a)->next->value)
-		sa(a, 1);
+		sa(a, 1, opt);
 }
 
 static int	is_sorted(t_stack *a)
-
 {
 	while (a && a->next)
 	{
@@ -32,7 +31,7 @@ static int	is_sorted(t_stack *a)
 	return (1);
 }
 
-void	sort_three(t_stack **a)
+void	sort_three(t_stack **a, t_option *opt)
 {
 	int	first;
 	int	second;
@@ -46,38 +45,38 @@ void	sort_three(t_stack **a)
 	second = (*a)->next->value;
 	third = (*a)->next->next->value;
 	if (first > second && second < third && first < third)
-		sa(a, 1);
+		sa(a, 1, opt);
 	else if (first > second && second > third)
 	{
-		sa(a, 1);
-		rra(a, 1);
+		sa(a, 1, opt);
+		rra(a, 1, opt);
 	}
 	else if (first > second && second < third && first > third)
-		ra(a, 1);
+		ra(a, 1, opt);
 	else if (first < second && second > third && first < third)
 	{
-		sa(a, 1);
-		ra(a, 1);
+		sa(a, 1, opt);
+		ra(a, 1, opt);
 	}
 	else if (first < second && second > third && first > third)
-		rra(a, 1);
+		rra(a, 1, opt);
 }
 
-void	sort_five(t_stack **a, t_stack **b)
-
+void	sort_five(t_stack **a, t_stack **b, t_option *opt)
 {
 	int size;
 	int min_pos;
+
 	if (!a || !*a)
 		return ;
 	while (stack_size(*a) > 3)
 	{
 		size = stack_size(*a);
 		min_pos = find_min_position(*a);
-		rotate_min_to_top(a, min_pos, size);
-		pb(a, b, 1);
+		rotate_min_to_top(a, min_pos, size, opt);
+		pb(a, b, 1, opt);
 	}
-	sort_three(a);
+	sort_three(a, opt);
 	while (*b)
-		pa(a, b, 1);
+		pa(a, b, 1, opt);
 }
