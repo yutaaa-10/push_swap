@@ -6,11 +6,24 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 23:08:20 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 19:05:16 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 21:07:44 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+int	is_strategy_flag(char *s)
+{
+	if (!ft_strncmp(s, "--simple", 8) && s[8] == '\0')
+		return (1);
+	if (!ft_strncmp(s, "--medium", 8) && s[8] == '\0')
+		return (1);
+	if (!ft_strncmp(s, "--complex", 9) && s[9] == '\0')
+		return (1);
+	if (!ft_strncmp(s, "--adaptive", 10) && s[10] == '\0')
+		return (1);
+	return (0);
+}
 
 int	handle_flag(char *s, t_option *opt)
 {
@@ -37,19 +50,6 @@ int	handle_flag(char *s, t_option *opt)
 	return (0);
 }
 
-int	is_strategy_flag(char *s)
-{
-	if (!ft_strncmp(s, "--simple", 8) && s[8] == '\0')
-		return (1);
-	if (!ft_strncmp(s, "--medium", 8) && s[8] == '\0')
-		return (1);
-	if (!ft_strncmp(s, "--complex", 9) && s[9] == '\0')
-		return (1);
-	if (!ft_strncmp(s, "--adaptive", 10) && s[10] == '\0')
-		return (1);
-	return (0);
-}
-
 int	parse_number(t_stack **a, char *s)
 {
 	long	num;
@@ -68,6 +68,7 @@ int	parse_number(t_stack **a, char *s)
 	stack_add_back(a, new);
 	return (1);
 }
+
 static int	has_space(char *s)
 {
 	while (*s)
@@ -81,8 +82,8 @@ static int	has_space(char *s)
 
 int	parse_args(t_stack **a, int argc, char **argv, t_option *opt)
 {
-	int i;
-	char **split;
+	int		i;
+	char	**split;
 
 	i = 1;
 	while (i < argc)

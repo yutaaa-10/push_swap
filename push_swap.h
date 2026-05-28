@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 18:27:58 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 21:05:36 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ typedef struct s_three
 
 // bench
 void				print_benchmark(t_option *opt);
-double				calculate_disorder(t_stack *a);
-// disorder
 
+// disorder
 void				adaptive_sort(t_stack **a, t_stack **b, t_option *opt);
+double				calculate_disorder(t_stack *a);
 
 // error
 void				print_error(void);
@@ -83,7 +83,6 @@ int					parse_args(t_stack **a, int argc, char **argv,
 void				fill_index(t_stack *a);
 int					handle_flag(char *s, t_option *opt);
 int					is_strategy_flag(char *s);
-void				init_option(t_option *opt);
 void				free_split(char **split);
 int					parse_split(t_stack **a, char **split);
 int					parse_number(t_stack **a, char *s);
@@ -99,7 +98,6 @@ void				rb(t_stack **b, int print, t_option *opt);
 void				rr(t_stack **a, t_stack **b, t_option *opt);
 void				rra(t_stack **a, int print, t_option *opt);
 void				rrb(t_stack **b, int print, t_option *opt);
-
 void				rrr(t_stack **a, t_stack **b, t_option *opt);
 
 // stack
@@ -110,6 +108,7 @@ int					stack_size(t_stack *stack);
 
 // main
 void				print_stack(t_stack *stack);
+void				init_option(t_option *opt);
 
 // sort route
 void				route_sort(t_stack **a, t_stack **b, t_option *opt);

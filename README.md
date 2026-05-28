@@ -1,193 +1,296 @@
-ゴール
-引数で受け取った整数列を11個の操作だけを使って、
-少ない operation 数でソートする命令列を出力するプログラム
+*This project has been created as part of the 42 curriculum by yukurosa,hdobashi.*
 
+# push_swap
 
-全体の流れ
-main
-↓
-input_parser
-↓
-stack生成
-↓
-strategy選択
-↓
-sort実行
-↓
-operation出力
-↓
-bench表示(optional)
-↓
-free
+## 概要（Description）
 
+push_swapは、与えられた整数列を限られたoperationのみを用いて昇順に並べ替えるアルゴリズム課題です。
 
-実行例
-./push_swap 3 2 1
+このプロジェクトでは、単にソートを実装するだけではなく、
+どのアルゴリズムを選択するべきか
+どの程度の計算量になるのか
+どのようにデータ構造を扱うべきか
+
+を深く理解することが求められます。
+
+特に、以下の内容を実践的に学ぶことを目的としています。
+```text
+ソートアルゴリズムの設計と実装
+計算量（O(n²), O(n√n), O(n log n)）の理解
+linked list を用いたstack構造の操作
+rotate / reverse rotate を用いたデータ移動
+限られたoperation内で最適化を行う考え方
+入力状態に応じたアルゴリズム選択
+```
+また、push_swapでは「正しく並べること」だけではなく、いかに少ないoperation数で並べるかが重要になるため、アルゴリズムの効率性や戦略設計についても学ぶことができます。
+
+## 手順（Instructions）
+
+### Makefile
+
+* 静的ライブラリを含めてコンパイル
+
+```bash
+make
+```
+
+* オブジェクトファイル（`.o`）を削除
+
+```bash
+make clean
+```
+
+* 実行ファイル・オブジェクトファイルをすべて削除
+
+```bash
+make fclean
+```
+
+* プロジェクトを完全に再構築
+
+```bash
+make re
+```
+
+---
+
+### 使用例
+
+```bash
+ARG="4 67 3 87 23"
+./push_swap --complex $ARG
+```
+
+---
+
+### 利用可能なstrategy
+
+```bash
+--simple
+--medium
+--complex
+--adaptive
+```
+
+例：
+
+```bash
+./push_swap --simple 3 2 1
+./push_swap --medium 3 2 1
 ./push_swap --complex 3 2 1
+./push_swap --adaptive 3 2 1
+```
+
+---
+
+### benchmark mode
+
+benchmark情報を表示する場合：
+
+```bash
 ./push_swap --bench --adaptive 3 2 1
+```
+
+以下の情報が stderr に出力されます。
+
+* disorder score
+* 使用されたstrategy
+* theoretical complexity
+* total operations
+* 各operationの実行回数
 
 
-詳細
-•返り値はoperationたち
-•操作は \n のみで区切られ、それ以外の区切り文字は使用してはならない。
-•各アルゴリズムに対して主張される計算量クラスは、このモデルにおいて有効でなければならない。
-•戦略の選択は、すべての有効な入力に対して機能しなければならない。選択フラグは、
-入力のサイズや順序に関係なく機能しなければならない。
-•パラメータが指定されていない場合、プログラムは何も表示せず、プロンプトを返すものとする。
-•エラーが発生した場合は、標準エラー出力に「Error」と表示し、その後に\nを付加する
-	エラーの例としては、引数が整数でない場合、整数が有効範囲外である場合、または値が重複してい	る場合などが挙げられます。
-•選択された戦略名と計算量クラスは、--benchモードで取得可能でなければなりません。
-	オプションのベンチマークモード（--bench）では、ソート後に以下を表示する必要があります：
-	・計算された無秩序度（小数点以下2桁の%）。
-	・使用された戦略名とその理論上の計算量クラス。
-	・演算の総数。
-	・各演算タイプのカウント（sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb,rrr）。
-	・ベンチマーク出力は stderr に出力され、このフラグが指定された場合にのみ表示される必要がある
-• 100個の乱数に対して、プログラムは以下の演算回数以下で処理する必要があります：
-	◦ 合格基準：2000回未満（最低要件）
-	◦ 良好な性能：1500回未満
-	◦優れたパフォーマンス：700 演算未満
-• 500 個の乱数に対して、プログラムは以下の演算数を使用する必要があります：
-	◦合格：12000 演算未満（最低要件）
-	◦良好なパフォーマンス：8000 演算未満
-	◦優れたパフォーマンス：5500 演算未満
 
 
-sort/
-simplesort　(O(n^2))
-	・挿入ソート
-	・選択ソート
-	・バブルソート
-	・単純な最小値最大値抽出法
 
-mediumsort O(n√n)
-	・チャンクベースのソート
-	・ブロックベースのパーティショニング方式
-	・n個のバケットを用いたバケットソートの応用
-	・範囲ベースのソート戦略
+## 詳細とアルゴリズム
+
+## 詳細とアルゴリズム
+
+本プロジェクトでは、入力された数列の状態に応じて、複数のソート戦略を使い分ける。
+
+使用する主な戦略は以下の3つである。
+
+| Strategy | Algorithm                 | Complexity |
+| -------- | ------------------------- | ---------- |
+| simple   | Selection sort adaptation | O(n²)      |
+| medium   | Chunk sort                | O(n√n)     |
+| complex  | Radix sort adaptation     | O(n log n) |
+
+---
+
+### Disorder score
+
+`--adaptive` が指定された場合、または strategy が指定されなかった場合は、入力の乱れ具合を `disorder score` として計算する。
+
+この実装では、数列内のすべての組み合わせを確認し、
+
+```text
+前にある値 > 後ろにある値
+```
+
+となる組を inversion として数える。
+
+```text
+disorder = inversion_count / total_pairs
+```
+
+disorder は `0.0` から `1.0` の値になる。
+
+* `0.0` に近いほど、すでに昇順に近い
+* `1.0` に近いほど、降順または大きく乱れている
+
+---
+
+### Threshold rationale
+
+adaptive mode では、以下の閾値で strategy を選択する。
+
+```text
+disorder < 0.20          -> simple
+0.20 <= disorder < 0.50  -> medium
+0.50 <= disorder         -> complex
+```
+
+この閾値は、入力の乱れ具合に応じて、必要なソート戦略の強さを変えるために設定している。
+
+#### simple を選ぶ理由
+
+disorder が低い場合、数列はある程度整列されている。
+
+この場合、大きく並べ替えるよりも、局所的に最小値を取り出していく simple algorithm の方が無駄な操作が少なくなる可能性がある。
+
+#### medium を選ぶ理由
+
+disorder が中程度の場合、1つずつ最小値を探すと operation 数が増えやすい。
+
+そのため、index を一定範囲ごとの chunk に分け、範囲単位で整理する chunk sort を使用する。
+
+#### complex を選ぶ理由
+
+disorder が高い場合、入力は大きく乱れている。
+
+この場合、局所的な修正では operation 数が増えやすいため、index の bit を利用して機械的に分類する radix sort を使用する。
+
+---
+
+### Simple strategy: Selection sort adaptation
+
+simple strategy では、selection sort を push_swap 用に応用する。
+
+処理の流れは以下の通り。
+
+```text
+1. stack a から最小値を探す
+2. ra または rra で最小値をtopへ移動する
+3. pb で stack b へ送る
+4. stack a が空になるまで繰り返す
+5. pa で stack b から stack a へ戻す
+```
+
+この方法では、毎回 stack 内を走査して最小値を探すため、探索に O(n) かかる。
+
+これを n 回繰り返すため、operation model 上の上限は O(n²) とみなす。
+
+Space complexity は、追加の stack b を使用するため O(n) である。
+
+---
+
+### Medium strategy: Chunk sort
+
+medium strategy では、index を chunk に分割して処理する。
+
+座標圧縮により、各 node は以下を持つ。
+
+```text
+value = 元の値
+index = 昇順に並べたときの順位
+```
+
+Chunk sort では value ではなく index を使う。
+
+処理の流れは以下の通り。
+
+```text
+1. n に対して chunk_size ≒ √n を決める
+2. index の範囲を chunk ごとに分ける
+3. 現在の chunk に含まれる値を stack b へ送る
+4. stack b 内では、小さい index を rb で下へ送る
+5. すべて stack b に送った後、最大 index を探して stack a に戻す
+```
+
+chunk を使うことで、selection sort のように1つずつ値を探すのではなく、範囲単位で値を処理できる。
+
+chunk 数と chunk size をともに √n 程度にすることで、探索と整理のバランスを取っている。
+
+このため、operation model 上の上限は O(n√n) とみなす。
+
+Space complexity は、追加の stack b を使用するため O(n) である。
+
+---
+
+### Complex strategy: Radix sort adaptation
+
+complex strategy では、index に対して radix sort を行う。
+
+元の値は負数や大きな値を含む可能性があるため、そのまま bit 処理を行わず、座標圧縮された index を使用する。
+
+処理の流れは以下の通り。
+
+```text
+1. 最大 index に必要な bit 数を求める
+2. 下位 bit から順に確認する
+3. 対象 bit が 0 なら pb
+4. 対象 bit が 1 なら ra
+5. stack b に送った要素を pa で stack a に戻す
+6. 全bit分繰り返す
+```
+
+index は `0` から `n - 1` の範囲になるため、最大 bit 数はおよそ log n である。
+
+各 bit に対して n 個の要素を処理するため、operation model 上の上限は O(n log n) とみなす。
+
+Space complexity は、追加の stack b を使用するため O(n) である。
+
+---
+
+### Benchmark mode
+
+`--bench` が指定された場合、ソート後に以下の情報を stderr に出力する。
+
+```text
+- computed disorder
+- strategy name
+- theoretical complexity
+- total operation count
+- count of each operation type
+```
+
+benchmark 情報は operation 出力と混ざらないように、stdout ではなく stderr に出力する。
+
+通常の push_swap operation は stdout に出力される。
+
+## 参考資料　（Resources）
 
 
-complexsort O(n log n)
-	•基数ソートの適応 (LSD または MSD)
-	•2つのスタックを使用したマージソートの適応
-	•スタック分割を使用したクイックソートの適応
-	•ヒープソートの適応
-	•バイナリインデックスツリーによるアプローチ
+### 参考文献
 
+- 42 push_swap資料
+- 工業大学生ももやまのうさぎ塾　プログラム計算量、オーダー表記O()の求め方
+- ソートコード探検隊　選択ソート:アルゴリズム
+- Qiita
 
-ファイル構成
-push_swap /
-	Makefile
-	pushs_swap
-	README.md
+### 参考文献 URL
 
-	libft /
-	ft_printf /
+- https://www.codereading.com/algo_and_ds/algo/selection_sort.html
+- https://qiita.com/MoriP-K/items/54ee96dc634148cf40a8
+- https://e-words.jp/w/%E5%9F%BA%E6%95%B0%E3%82%BD%E3%83%BC%E3%83%88.html
+- https://www.momoyama-usagi.com/entry/calc-order#gsc.tab=0
 
-	input_parser /
-	stack /
-	disorder /
-	operation /
-	sort /
-	bench /
+## AIの使い方
 
-	main.c
-
-・main.c
-引数を受け取り、parser、sort、benchを呼んでfreeをする
-init_option
-オプション設定を初期状態にする関数。
-初期値を0に設定することで、--benchがないときはそのままにしてプログラムを進めることができる
-main
-引数解析、ソート実行、メモリ解放
-
-
-・input_parser
-引数解析、flag確認、int範囲、重複確認、stack生成を行う。
-parse_args
-コマンドライン引数を数字やフラグ、として読み取る関数
-handle_flag
---benchやソートのフラグを処理する関数
-is_strategy_flag
-文字れるが戦略フラグかどうかを判定する
-
-・error
-print_error
-標準エラーにerrorを出力する
-number_check
-文字列が整数として正しい形かを確認する関数
-ft_atol
-文字列をlong型にする
-一度ロングで受け取って、そのあとintを超える範囲ならreturnする
-has_duplicate
-スタックないに同じ値があるか確認する関数
-
-・stack
-linked list補助関数
-stack_new
-新しいスタックノードを作る関数。
-stack_add_back
-スタックの末尾にノードを追加する関数。
-free_stack
-スタック全体のメモリを解放する関数。
-stack_size
-スタックの要素数を数える関数。
-
-・operation
-sa
-stack A の先頭2つを入れ替える関数。
-sb
-stack B の先頭2つを入れ替える関数。
-ss
-sa と sb を同時に行う関数。
-pa
-stack B の先頭を stack A に移す関数。
-pb
-stack A の先頭を stack B に移す関数。
-ra
-stack A を上方向に1つ回転する関数。
-rb
-stack B を上方向に1つ回転する関数。
-rr
-ra と rb を同時に行う関数。
-rra
-stack A を下方向に1つ回転する関数。
-rrb
-stack B を下方向に1つ回転する関数。
-rrr
-rra と rrb を同時に行う関数。
-
-route_sort
-要素数や戦略に応じて使うソート関数を選ぶ関数。
-sort_two
-2個用のソート関数
-sort_three
-3個用のソート関数
-sort_five
-5個以下用のソート関数
-simple_sort
-simple戦略のソート関数、今は仮実装
-medium_sort
-medium戦略のソート関数
-complex_sort
-complex戦略のソート関数
-adaptive_sortadaptive戦略のソート関数
-
-disorder/
-入力の乱れ具合を計算
-初期のスタックがどれだけ綺麗に並べられているか
-0に近いほど順番通りに、1に近いほど複雑な並びになる
-大きい数値が小さい数値用も前にあると、カウントされてカウントの数が大きいほど複雑になる仕組み
-
-disorder < 0.2 → simple
-0.2 <= disorder < 0.5 → medium
-0.5 <= disorder → complex
-
-
-bench/
--bench 時のみ表示。
-strategy
-complexity
-operation
-operation回数
-
+AIは以下の目的で使用。：
+- 計算量の理解
+- 実装案の検討
+- デバッグに関する議論
+- Makefileの構造の理解
