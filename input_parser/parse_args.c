@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 23:08:20 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 18:21:19 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 19:05:16 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,21 @@ int	parse_number(t_stack **a, char *s)
 	stack_add_back(a, new);
 	return (1);
 }
+static int	has_space(char *s)
+{
+	while (*s)
+	{
+		if (*s == ' ')
+			return (1);
+		s++;
+	}
+	return (0);
+}
 
 int	parse_args(t_stack **a, int argc, char **argv, t_option *opt)
 {
-	int		i;
-	char	**split;
+	int i;
+	char **split;
 
 	i = 1;
 	while (i < argc)
@@ -82,13 +92,15 @@ int	parse_args(t_stack **a, int argc, char **argv, t_option *opt)
 			if (!handle_flag(argv[i], opt))
 				return (print_error(), 0);
 		}
-		else
+		else if (has_space(argv[i]))
 		{
 			split = ft_split(argv[i], ' ');
 			if (!parse_split(a, split))
 				return (free_split(split), 0);
 			free_split(split);
 		}
+		else if (!parse_number(a, argv[i]))
+			return (0);
 		i++;
 	}
 	if (!*a)
