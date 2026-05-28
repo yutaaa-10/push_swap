@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 15:13:48 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 16:57:07 by hdobashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,7 @@ void				rotate_max_to_top(t_stack **b, int max_pos, int size,
 void				push_chunks_to_b(t_stack **a, t_stack **b, int chunk_size,
 						t_option *opt);
 
-void				complex_sort(t_stack **a, t_stack **b);
-
 // complex sort
-void				complex_sort(t_stack **a, t_stack **b);
-
+void				complex_sort(t_stack **a, t_stack **b, t_option *opt);
+void				radix(t_stack **a, t_stack **b, t_option *opt);
 #endif

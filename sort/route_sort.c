@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   route_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 12:44:29 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 13:31:04 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 16:56:16 by hdobashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	route_sort(t_stack **a, t_stack **b, t_option *opt)
 	else if (opt->strategy == STRATEGY_MEDIUM)
 		medium_sort(a, b, opt);
 	else if (opt->strategy == STRATEGY_COMPLEX)
-		complex_sort(a, b, opt);
+		radix(a, b, opt);
 	else
 		adaptive_sort(a, b, opt);
 }
