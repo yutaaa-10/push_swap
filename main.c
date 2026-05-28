@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 12:29:04 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 18:27:57 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init_option(t_option *opt)
 {
 	opt->bench = 0;
+	opt->disorder = 0.0;
 	opt->strategy = STRATEGY_ADAPTIVE;
 	opt->has_strategy = 0;
 	opt->count.total = 0;
@@ -48,6 +49,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	fill_index(a);
+	if (opt.bench)
+		opt.disorder = calculate_disorder(a) * 100.0;
+	if (is_sorted(a))
+		return (print_benchmark(&opt), free_stack(a), 0);
 	route_sort(&a, &b, &opt);
 	if (opt.bench)
 		print_benchmark(&opt);

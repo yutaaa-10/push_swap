@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 23:08:20 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 15:10:47 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 18:21:19 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_flag(char *s, t_option *opt)
 {
-	if (!ft_strncmp(s, "--bench", 8))
+	if (!ft_strncmp(s, "--bench", 7) && s[7] == '\0')
 	{
 		opt->bench = 1;
 		return (1);
@@ -24,13 +24,13 @@ int	handle_flag(char *s, t_option *opt)
 		if (opt->has_strategy != 0)
 			return (0);
 		opt->has_strategy = 1;
-		if (!ft_strncmp(s, "--simple", 9))
+		if (!ft_strncmp(s, "--simple", 8) && s[8] == '\0')
 			opt->strategy = STRATEGY_SIMPLE;
-		else if (!ft_strncmp(s, "--medium", 9))
+		else if (!ft_strncmp(s, "--medium", 8) && s[8] == '\0')
 			opt->strategy = STRATEGY_MEDIUM;
-		else if (!ft_strncmp(s, "--complex", 10))
+		else if (!ft_strncmp(s, "--complex", 9) && s[9] == '\0')
 			opt->strategy = STRATEGY_COMPLEX;
-		else
+		else if (!ft_strncmp(s, "--adaptive", 10) && s[10] == '\0')
 			opt->strategy = STRATEGY_ADAPTIVE;
 		return (1);
 	}
@@ -39,13 +39,13 @@ int	handle_flag(char *s, t_option *opt)
 
 int	is_strategy_flag(char *s)
 {
-	if (!ft_strncmp(s, "--simple", 9))
+	if (!ft_strncmp(s, "--simple", 8) && s[8] == '\0')
 		return (1);
-	if (!ft_strncmp(s, "--medium", 9))
+	if (!ft_strncmp(s, "--medium", 8) && s[8] == '\0')
 		return (1);
-	if (!ft_strncmp(s, "--complex", 10))
+	if (!ft_strncmp(s, "--complex", 9) && s[9] == '\0')
 		return (1);
-	if (!ft_strncmp(s, "--adaptive", 11))
+	if (!ft_strncmp(s, "--adaptive", 10) && s[10] == '\0')
 		return (1);
 	return (0);
 }

@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   as.c                                               :+:      :+:    :+:   */
+/*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:40:26 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 12:40:32 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 18:17:41 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+static void	print_disorder(double disorder)
+{
+	int	value;
+
+	value = (int)(disorder * 100 + 0.5);
+	ft_putstr_fd("Disorder: ", 2);
+	ft_putnbr_fd(value / 100, 2);
+	ft_putchar_fd('.', 2);
+	if (value % 100 < 10)
+		ft_putchar_fd('0', 2);
+	ft_putnbr_fd(value % 100, 2);
+	ft_putstr_fd("%\n", 2);
+}
 
 static char	*get_strategy_name(t_strategy strategy)
 {
@@ -46,6 +60,7 @@ void	print_benchmark(t_option *opt)
 {
 	if (!opt || !opt->bench)
 		return ;
+	print_disorder(opt->disorder);
 	ft_putstr_fd("Strategy: ", 2);
 	ft_putstr_fd(get_strategy_name(opt->strategy), 2);
 	ft_putchar_fd('\n', 2);

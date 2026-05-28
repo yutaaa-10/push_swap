@@ -6,13 +6,13 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 16:11:01 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 13:30:42 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 18:28:00 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static double	calculate_disorder(t_stack *a)
+double	calculate_disorder(t_stack *a)
 {
 	t_stack	*i;
 	t_stack	*j;
@@ -41,19 +41,14 @@ static double	calculate_disorder(t_stack *a)
 	return ((double)mistake / (double)total);
 }
 
-void	adaptive_sort(t_stack **a, t_stack **b, t_option *opt)
+static void	set_strategy(t_stack **a, t_stack **b, t_option *opt, double score)
 {
-	double	score;
-
-	if (!a || !*a)
-		return ;
-	score = calculate_disorder(*a);
 	if (score < 0.2)
 	{
 		opt->strategy = STRATEGY_SIMPLE;
 		simple_sort(a, b, opt);
 	}
-	else if (score >= 0.2 && score < 0.5)
+	else if (score < 0.5)
 	{
 		opt->strategy = STRATEGY_MEDIUM;
 		medium_sort(a, b, opt);
@@ -61,6 +56,23 @@ void	adaptive_sort(t_stack **a, t_stack **b, t_option *opt)
 	else
 	{
 		opt->strategy = STRATEGY_COMPLEX;
-		complex_sort(a, b, opt);
+		radix(a, b, opt);
 	}
+}
+
+void	adaptive_sort(t_stack **a, t_stack **b, t_option *opt)
+{
+	double	score;
+
+	if (!a || !*a)
+		return ;
+	score = calculate_disorder(*a);
+	if (opt)
+		opt->disorder = score * 100.0;
+	if (is_sorted(*a))
+	{
+		opt->strategy = STRATEGY_SIMPLE;
+		return ;
+	}
+	set_strategy(a, b, opt, score);
 }

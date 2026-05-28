@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 12:50:43 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 14:58:49 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 17:49:24 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sort_two(t_stack **a, t_option *opt)
 		sa(a, 1, opt);
 }
 
-static int	is_sorted(t_stack *a)
+int	is_sorted(t_stack *a)
 {
 	while (a && a->next)
 	{

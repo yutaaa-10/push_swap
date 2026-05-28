@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 17:08:54 by hdobashi         ###   ########.fr       */
+/*   Updated: 2026/05/28 18:27:58 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_count
 typedef struct s_option
 {
 	int				bench;
+	double			disorder;
 	t_strategy		strategy;
 	int				has_strategy;
 	t_count			count;
@@ -65,7 +66,7 @@ typedef struct s_three
 
 // bench
 void				print_benchmark(t_option *opt);
-
+double				calculate_disorder(t_stack *a);
 // disorder
 
 void				adaptive_sort(t_stack **a, t_stack **b, t_option *opt);
@@ -117,6 +118,7 @@ void				route_sort(t_stack **a, t_stack **b, t_option *opt);
 void				sort_two(t_stack **a, t_option *opt);
 void				sort_three(t_stack **a, t_option *opt);
 void				sort_five(t_stack **a, t_stack **b, t_option *opt);
+int					is_sorted(t_stack *a);
 // strategy sort
 
 // simple sort
