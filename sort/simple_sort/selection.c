@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 10:18:48 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 12:54:44 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 15:00:28 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	rotate_min_to_top(t_stack **a, int min_pos, int size, t_option *opt)
 
 void	simple_sort(t_stack **a, t_stack **b, t_option *opt)
 {
-	int size;
-	int min_pos;
+	int	size;
+	int	min_pos;
 
 	while (*a)
 	{

@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 23:25:50 by hdobashi          #+#    #+#             */
-/*   Updated: 2026/05/28 13:40:21 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:52:35 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	rb(t_stack **b, int print, t_option *opt)
 	if (print)
 		write(1, "rb\n", 3);
 }
+
 void	rr(t_stack **a, t_stack **b, t_option *opt)
 {
 	ra(a, 0, opt);

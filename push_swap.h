@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 13:54:44 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 15:13:48 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ typedef struct s_option
 	t_count			count;
 }					t_option;
 
+typedef struct s_three
+{
+	int				first;
+	int				second;
+	int				third;
+}					t_three;
+
 // bench
 void				print_benchmark(t_option *opt);
 
@@ -77,6 +84,8 @@ int					handle_flag(char *s, t_option *opt);
 int					is_strategy_flag(char *s);
 void				init_option(t_option *opt);
 void				free_split(char **split);
+int					parse_split(t_stack **a, char **split);
+int					parse_number(t_stack **a, char *s);
 
 // operations
 void				sa(t_stack **a, int print, t_option *opt);

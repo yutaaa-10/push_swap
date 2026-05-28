@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 23:08:20 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/27 17:36:42 by hdobashi         ###   ########.fr       */
+/*   Updated: 2026/05/28 15:10:47 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,7 @@ int	is_strategy_flag(char *s)
 	return (0);
 }
 
-void	free_split(char **split)
-{
-	int	i;
-
-	if (!split)
-		return ;
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-}
-
-static int	parse_number(t_stack **a, char *s)
+int	parse_number(t_stack **a, char *s)
 {
 	long	num;
 	t_stack	*new;
@@ -84,23 +69,7 @@ static int	parse_number(t_stack **a, char *s)
 	return (1);
 }
 
-static int	parse_split(t_stack **a, char **split)
-{
-	int	i;
-
-	i = 0;
-	if (!split || !split[0])
-		return (0);
-	while (split[i])
-	{
-		if (!parse_number(a, split[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	parse_args(t_stack **a, int argc, char **argv, t_option *opt )
+int	parse_args(t_stack **a, int argc, char **argv, t_option *opt)
 {
 	int		i;
 	char	**split;

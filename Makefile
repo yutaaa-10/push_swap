@@ -6,7 +6,7 @@
 #    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/28 13:41:46 by yukurosa         ###   ########.fr        #
+#    Updated: 2026/05/28 15:09:38 by yukurosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = \
 	main.c \
 	input_parser/parse_args.c \
 	input_parser/fill_index.c\
+	input_parser/split.c\
 	stack/list.c \
 	libft/ft_atoi.c \
 	libft/ft_isdigit.c \
@@ -36,18 +37,13 @@ SRCS = \
 	error/number_check.c \
 	sort/simple_sort/selection.c\
 	sort/medium_sort/chunk.c \
+	sort/medium_sort/chunk_help.c \
 	sort/complex_sort/complex.c \
 	operation/oper_p.c \
 	operation/oper_r.c \
 	operation/oper_rr.c \
 	operation/oper_s.c \
 	bench/bench.c \
-
-
-
-
-
-
 
 OBJS = $(SRCS:.c=.o)
 

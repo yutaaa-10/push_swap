@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 12:50:43 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 13:11:14 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 14:58:49 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,41 +31,44 @@ static int	is_sorted(t_stack *a)
 	return (1);
 }
 
+static void	sort_three_case(t_stack **a, t_option *opt, t_three n)
+{
+	if (n.first > n.second && n.second < n.third && n.first < n.third)
+		sa(a, 1, opt);
+	else if (n.first > n.second && n.second > n.third)
+	{
+		sa(a, 1, opt);
+		rra(a, 1, opt);
+	}
+	else if (n.first > n.second && n.second < n.third && n.first > n.third)
+		ra(a, 1, opt);
+	else if (n.first < n.second && n.second > n.third && n.first < n.third)
+	{
+		sa(a, 1, opt);
+		ra(a, 1, opt);
+	}
+	else if (n.first < n.second && n.second > n.third && n.first > n.third)
+		rra(a, 1, opt);
+}
+
 void	sort_three(t_stack **a, t_option *opt)
 {
-	int	first;
-	int	second;
-	int	third;
+	t_three	n;
 
 	if (!a || !*a || !(*a)->next || !(*a)->next->next)
 		return ;
 	if (is_sorted(*a))
 		return ;
-	first = (*a)->value;
-	second = (*a)->next->value;
-	third = (*a)->next->next->value;
-	if (first > second && second < third && first < third)
-		sa(a, 1, opt);
-	else if (first > second && second > third)
-	{
-		sa(a, 1, opt);
-		rra(a, 1, opt);
-	}
-	else if (first > second && second < third && first > third)
-		ra(a, 1, opt);
-	else if (first < second && second > third && first < third)
-	{
-		sa(a, 1, opt);
-		ra(a, 1, opt);
-	}
-	else if (first < second && second > third && first > third)
-		rra(a, 1, opt);
+	n.first = (*a)->value;
+	n.second = (*a)->next->value;
+	n.third = (*a)->next->next->value;
+	sort_three_case(a, opt, n);
 }
 
 void	sort_five(t_stack **a, t_stack **b, t_option *opt)
 {
-	int size;
-	int min_pos;
+	int	size;
+	int	min_pos;
 
 	if (!a || !*a)
 		return ;
