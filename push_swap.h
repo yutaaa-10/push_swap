@@ -6,14 +6,13 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 13:35:12 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/28 13:54:44 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
