@@ -6,7 +6,7 @@
 #    By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/28 16:58:43 by hdobashi         ###   ########.fr        #
+#    Updated: 2026/05/28 17:08:57 by hdobashi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ SRCS = \
 	sort/simple_sort/selection.c\
 	sort/medium_sort/chunk.c \
 	sort/medium_sort/chunk_help.c \
-	sort/complex_sort/complex.c \
 	sort/complex_sort/radix.c\
 	operation/oper_p.c \
 	operation/oper_r.c \

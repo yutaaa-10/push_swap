@@ -6,7 +6,7 @@
 /*   By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 16:57:07 by hdobashi         ###   ########.fr       */
+/*   Updated: 2026/05/28 17:08:54 by hdobashi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,5 @@ void				push_chunks_to_b(t_stack **a, t_stack **b, int chunk_size,
 						t_option *opt);
 
 // complex sort
-void				complex_sort(t_stack **a, t_stack **b, t_option *opt);
 void				radix(t_stack **a, t_stack **b, t_option *opt);
 #endif
