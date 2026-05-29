@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 11:49:54 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/29 14:13:42 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/29 16:17:37 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	init_option(t_option *opt)
 {
 	opt->bench = 0;
 	opt->strategy = STRATEGY_ADAPTIVE;
-	opt->selected_strategy = STRATEGY_ADAPTIVE;
+	opt->selected_strategy = STRATEGY_SIMPLE;
 	opt->has_strategy = 0;
 	opt->disorder = 0.0;
 	opt->count.total = 0;

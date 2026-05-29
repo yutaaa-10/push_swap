@@ -6,7 +6,7 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 13:02:36 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/29 14:30:47 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/29 16:07:54 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,5 @@ void	adaptive_sort(t_stack **a, t_stack **b, t_option *opt)
 		return ;
 	score = calculate_disorder(*a);
 	opt->disorder = score * 100.0;
-	if (is_sorted(*a))
-	{
-		opt->selected_strategy = STRATEGY_SIMPLE;
-		return ;
-	}
 	set_strategy(a, b, opt, score);
 }
