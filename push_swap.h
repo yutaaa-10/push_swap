@@ -6,14 +6,14 @@
 /*   By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:38:53 by yukurosa          #+#    #+#             */
-/*   Updated: 2026/05/28 21:17:55 by yukurosa         ###   ########.fr       */
+/*   Updated: 2026/05/29 14:29:27 by yukurosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -51,9 +51,10 @@ typedef struct s_count
 typedef struct s_option
 {
 	int				bench;
-	double			disorder;
 	t_strategy		strategy;
+	t_strategy		selected_strategy;
 	int				has_strategy;
+	double			disorder;
 	t_count			count;
 }					t_option;
 
@@ -66,6 +67,9 @@ typedef struct s_three
 
 // bench
 void				print_benchmark(t_option *opt);
+void				print_disorder_value(double disorder);
+char				*get_strategy_name(t_strategy strategy);
+char				*get_complexity_name(t_strategy strategy);
 
 // disorder
 void				adaptive_sort(t_stack **a, t_stack **b, t_option *opt);
@@ -136,4 +140,13 @@ void				push_chunks_to_b(t_stack **a, t_stack **b, int chunk_size,
 
 // complex sort
 void				radix(t_stack **a, t_stack **b, t_option *opt);
+
+// libft
+int					ft_atoi(const char *str);
+int					ft_isdigit(int c);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				**ft_split(char const *s, char c);
+void				ft_putstr_fd(char *s, int fd);
+void				ft_putnbr_fd(int n, int fd);
+void				ft_putchar_fd(char c, int fd);
 #endif

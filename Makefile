@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hdobashi <hdobashi@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: yukurosa <yukurosa@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/23 09:46:20 by yukurosa          #+#    #+#              #
-#    Updated: 2026/05/28 17:08:57 by hdobashi         ###   ########.fr        #
+#    Updated: 2026/05/29 14:29:59 by yukurosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,32 +18,26 @@ CPPFLAGS = -I. -Ilibft
 
 SRCS = \
 	main.c \
-	input_parser/parse_args.c \
-	input_parser/fill_index.c\
-	input_parser/split.c\
-	stack/list.c \
-	libft/ft_atoi.c \
-	libft/ft_isdigit.c \
-	libft/ft_strncmp.c \
-	libft/ft_split.c \
-	libft/ft_putstr_fd.c \
-	libft/ft_putnbr_fd.c \
-	libft/ft_putchar_fd.c \
-	sort/route_sort.c \
-	sort/small_sort.c \
-	disoder/adaptive.c \
-	error/error.c \
-	error/has_duplicate.c \
-	error/number_check.c \
-	sort/simple_sort/selection.c\
-	sort/medium_sort/chunk.c \
-	sort/medium_sort/chunk_help.c \
-	sort/complex_sort/radix.c\
-	operation/oper_p.c \
-	operation/oper_r.c \
-	operation/oper_rr.c \
-	operation/oper_s.c \
-	bench/bench.c \
+	parse_args.c \
+	parse_split.c\
+	list.c \
+	libft_split.c \
+	libft_put.c \
+	libft_utils.c \
+	sort_route.c \
+	sort_small.c \
+	adaptive.c \
+	error_check.c \
+	sort_selection.c\
+	sort_chunk.c \
+	sort_chunk_help.c \
+	sort_radix.c\
+	oper_p.c \
+	oper_r.c \
+	oper_rr.c \
+	oper_s.c \
+	bench.c \
+	bench_print.c 
 
 OBJS = $(SRCS:.c=.o)
 

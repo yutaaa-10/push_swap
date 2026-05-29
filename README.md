@@ -24,6 +24,14 @@ rotate / reverse rotate を用いたデータ移動
 ```
 また、push_swapでは「正しく並べること」だけではなく、いかに少ないoperation数で並べるかが重要になるため、アルゴリズムの効率性や戦略設計についても学ぶことができます。
 
+### チーム貢献
+
+- 両者で議論をしながら、細かい作業はお互いで勧め、大きな作業は以下のようにして役割分担をしました。
+- yukurosa
+    - 主に、operation,bench,simple_sortを担当
+- hdobashi
+    - 主に、medium_sort,complex-sort,listを担当
+
 ## 手順（Instructions）
 
 ### Makefile
